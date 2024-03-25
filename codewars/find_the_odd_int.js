@@ -11,17 +11,4 @@ Examples
 [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
 */
 
-function findOdd(A) {
-  // 맵 생성
-  const countMap = {}
-  // 맵에 각 횟수 저장
-  A.forEach(num => {
-    countMap[num] = countMap[num] ? countMap[num] + 1 : 1;
-  })
-  // 맵 순회
-  for (num in countMap) {
-    if (countMap[num] % 2 !== 0) return Number(num);
-  }
-}
-
-console.log(findOdd([1,1,2]))
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b);
