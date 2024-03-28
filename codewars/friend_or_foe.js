@@ -1,4 +1,1 @@
-function friend(friends) {
-  var result = friends.filter(friend => friend.length === 4); 
-  return result
-}
+const friend = friends => friends.filter(friend => friend.length === 4);
