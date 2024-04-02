@@ -1,0 +1,31 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#3c84bf",
+    "activityBar.background": "#3c84bf",
+    "sash.hoverBorder": "#3c84bf",
+    "statusBar.background": "#306998",
+    "statusBarItem.hoverBackground": "#3c84bf",
+    "statusBarItem.remoteBackground": "#306998",
+    "titleBar.activeBackground": "#306998",
+    "titleBar.inactiveBackground": "#30699899",
+    "panel.border": "#3c84bf",
+    "activityBarBadge.background": "#e8b6d2",
+    "activityBarBadge.foreground": "#15202b",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "tab.activeBorder": "#3c84bf"
+  },
+  "peacock.color": "#306998",
+  "peacock.keepBadgeColor": false,
+  "peacock.keepForegroundColor": false,
+  "peacock.showColorInStatusBar": true,
+  "peacock.squigglyBeGone": false,
+  "peacock.surpriseMeOnStartup": false,
+  "peacock.affectPanelBorder": true,
+  "peacock.affectTabActiveBorder": true
+}
