@@ -28,7 +28,7 @@ def solution(maps):
                         0 <= nx < row and 0 <= ny < col  # nx, ny는 범위 내
                         and maps[ny][nx] != "X"  # 방문 하고자 하는 좌표가 X가 아님
                         and not visited[ny][nx]  # 방문 한적이 없으면
-                        and not (nx,ny) in queue  # 그리고 queue에 없으면 추가,
+                        and not (nx,ny) in queue  # queue에 있으면 추가 하지 않음
                     ): queue.append((nx, ny))
 
             # 순회가 끝, 배열에 더하기 
