@@ -17,7 +17,7 @@ def solution(maps):
             queue = [(idx, jdx)]
             # 큐가 빌 때까지 = 한 섬을 전부 탐색
             while queue:
-                ox, oy = queue.pop()
+                ox, oy = queue.pop(0)
                 if visited[oy][ox]:
                     continue
                 visited[oy][ox] = True
