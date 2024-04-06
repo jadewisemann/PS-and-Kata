@@ -1,10 +1,7 @@
 const sumPairs = (ints, s) => {
-  const seen = new Set();
+  const seen = {};
   for (let i = 0; i < ints.length; ++i) {
-    if (seen.has(s - ints[i])) {
-      return [s - ints[i], ints[i]];
-    }
-    seen.add(ints[i]);
+    if (seen[s - ints[i]]) return [s - ints[i], ints[i]];
+    seen[ints[i]] = true
   }
-  return undefined;
 };
