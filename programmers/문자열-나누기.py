@@ -1,6 +1,5 @@
 def solution(s):
     answer = 0
-    
     while s:
         X = s[0]
         is_X = 0
