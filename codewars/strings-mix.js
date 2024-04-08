@@ -1,39 +1,26 @@
+const alphabets = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
 const mix = (s1, s2) => {
+  // 알파벳을 순회하면서 모든 문자열안에 모든 글자가 몇개 씩 들어있는지 센다.
+  return alphabets
+    .map(alphabet => {
+      const
+        s1Count = s1.split('').filter(letter => letter === alphabet).length,
+        s2Count = s2.split('').filter(letter => letter === alphabet).length,
+        maxCount = Math.max(s1Count, s2Count);
 
-  const getFrequencyMap = str =>
-    [...str]
-      .filter(char => char >= 'a' && char <= 'z')
-      .reduce((acc, char) => {
-        acc[char] = (acc[char] || 0) + 1;
-        return acc;
-      }, {});
-
-  const freqMap1 = getFrequencyMap(s1);
-  const freqMap2 = getFrequencyMap(s2);
-
-  const allKeys = new Set([...Object.keys(freqMap1), ...Object.keys(freqMap2)]);
-
-  let result = [...allKeys]
-    .reduce((acc, key) => {
-      const count1 = freqMap1[key] || 0;
-      const count2 = freqMap2[key] || 0;
-
-      if (count1 > 1 || count2 > 1) {
-        const prefix = count1 > count2 ? '1' : count1 < count2 ? '2' : '=';
-        acc.push(`${prefix}:${key.repeat(Math.max(count1, count2))}`);
-      }
-
-      return acc;
-    }, [])
-    .sort((a, b) => {
-      const lengthDifference = b.slice(3).length - a.slice(3).length;
-      if (lengthDifference !== 0) return lengthDifference;
-
-      const priority = {'1': 1, '2': 2, '=': 3};
-      const prefixOrder = priority[a[0]] - priority[b[0]];
-
-      return prefixOrder !== 0 ? prefixOrder : a.localeCompare(b);
-    });
-
-  return result.join('/');
+      return {
+        letter: alphabet,
+        count: maxCount,
+        source: maxCount > s1Count ? '2'
+          : maxCount > s2Count ? '1'
+          : '='
+      };
+    })
+    .filter(everyChar => everyChar.count > 1)  // 모든 문자얄에 몇개씩 받았는지 셌기 때문에, 문제 조건인 1번 초과 등장만 문자만 거른다
+    .sort((objA, objB) => {
+      objB.count - objA.count || (objA.source + objA.letter > objB.source + objB.letter ? 1 : -1)
+    }) 
+    .map(c => `${c.source}:${c.letter.repeat(c.count)}`)
+    .join('/');
 }
