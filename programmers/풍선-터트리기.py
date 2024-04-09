@@ -53,22 +53,22 @@
 """
 
 def solution(balloons):
-    
+
     answer = 0
-    
+
     # 순회, from left
     minimum = float('inf')
     left_min_arr = []
-    
+
     for balloon in balloons:
         if balloon < minimum:
             minimum = balloon
         left_min_arr.append(minimum)
-    
+
     # 순회, from right
     minimum = float('inf')
     right_min_arr = []
-    
+
     for balloon in balloons[::-1]:
         if  balloon < minimum:
             minimum = balloon
