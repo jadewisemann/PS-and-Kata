@@ -52,6 +52,29 @@
 -   최후까지 남을 수 있는 풍선은 -16, -92, -71, -68, -61, -33이 써진 풍선으로 모두 6개입니다.
 """
 
-def solution(a):
-    answer = 0 
+def solution(balloons):
+    N = len(balloons)
+    array = [False] * N
+    answer = 0
+    min_from_left = min_from_right = float('inf')
+    
+    # 순회, from left
+    for idx, balloon in enumerate(balloons):
+        if min_from_left > balloon:
+            if array[idx]: 
+                continue
+            array[idx] = True
+            answer += 1
+        min_from_left = min(min_from_left, balloon)
+    
+    # 순회, from right
+    for pre_idx, balloon in enumerate(balloons[::-1]):
+        idx = (pre_idx+1) * (-1)
+        if min_from_right > balloon:
+            if array[idx]: 
+                continue
+            array[idx] = True
+            answer += 1
+        min_from_right = min(min_from_right, balloon)
+
     return answer
