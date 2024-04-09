@@ -53,28 +53,62 @@
 """
 
 def solution(balloons):
-    N = len(balloons)
-    array = [False] * N
     answer = 0
-    min_from_left = min_from_right = float('inf')
+    min_from_left, min_from_right = [float('inf')] * 2
+    left_min_arr, right_min_arr = [], []
     
     # 순회, from left
-    for idx, balloon in enumerate(balloons):
-        if min_from_left > balloon:
-            if array[idx]: 
-                continue
-            array[idx] = True
-            answer += 1
-        min_from_left = min(min_from_left, balloon)
+    for balloon in balloons:
+        if balloon < min_from_left:
+            min_from_left = balloon
+        left_min_arr.append(min_from_left)
     
     # 순회, from right
-    for pre_idx, balloon in enumerate(balloons[::-1]):
-        idx = (pre_idx+1) * (-1)
-        if min_from_right > balloon:
-            if array[idx]: 
-                continue
-            array[idx] = True
-            answer += 1
-        min_from_right = min(min_from_right, balloon)
+    for balloon in balloons[::-1]:
+        if  balloon < min_from_right:
+            min_from_right = balloon
+        right_min_arr.append(min_from_right)
+    right_min_arr.reverse()
 
+    # 풍선 확인
+    for idx, balloon in enumerate(balloons):
+        if balloon <= left_min_arr[idx] or balloon <= right_min_arr[idx]:
+            answer += 1
     return answer
+
+""" use enumerate
+ 테스트 1 〉	통과 (0.01ms, 10.2MB)
+ 테스트 2 〉	통과 (0.01ms, 10.2MB)
+ 테스트 3 〉	통과 (0.50ms, 10.4MB)
+ 테스트 4 〉	통과 (29.25ms, 16.7MB)
+ 테스트 5 〉	통과 (168.20ms, 44.4MB)
+ 테스트 6 〉	통과 (258.35ms, 59.8MB)
+ 테스트 7 〉	통과 (337.10ms, 76.7MB)
+ 테스트 8 〉	통과 (384.63ms, 76.7MB)
+ 테스트 9 〉	통과 (394.34ms, 76.8MB)
+테스트 10 〉	통과 (320.07ms, 76.7MB)
+테스트 11 〉	통과 (344.46ms, 76.6MB)
+테스트 12 〉	통과 (382.18ms, 76.7MB)
+테스트 13 〉	통과 (337.86ms, 76.7MB)
+테스트 14 〉	통과 (318.33ms, 76.7MB)
+테스트 15 〉	통과 (325.90ms, 76.7MB)
+"""
+
+""" use for - in
+ 테스트 1 〉	통과 (0.01ms, 10.3MB)
+ 테스트 2 〉	통과 (0.01ms, 10.2MB)
+ 테스트 3 〉	통과 (0.42ms, 10.3MB)
+ 테스트 4 〉	통과 (49.50ms, 16.7MB)
+ 테스트 5 〉	통과 (126.95ms, 44.2MB)
+ 테스트 6 〉	통과 (203.92ms, 59.8MB)
+ 테스트 7 〉	통과 (295.72ms, 76.7MB)
+ 테스트 8 〉	통과 (266.98ms, 76.8MB)
+ 테스트 9 〉	통과 (310.61ms, 76.8MB)
+테스트 10 〉	통과 (279.29ms, 76.7MB)
+테스트 11 〉	통과 (262.78ms, 76.8MB)
+테스트 12 〉	통과 (281.61ms, 76.7MB)
+테스트 13 〉	통과 (303.05ms, 76.7MB)
+테스트 14 〉	통과 (292.11ms, 76.7MB)
+테스트 15 〉	통과 (332.77ms, 76.6MB)
+
+"""
