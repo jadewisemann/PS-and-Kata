@@ -53,21 +53,26 @@
 """
 
 def solution(balloons):
+    
     answer = 0
-    min_from_left, min_from_right = [float('inf')] * 2
-    left_min_arr, right_min_arr = [], []
     
     # 순회, from left
+    minimum = float('inf')
+    left_min_arr = []
+    
     for balloon in balloons:
-        if balloon < min_from_left:
-            min_from_left = balloon
-        left_min_arr.append(min_from_left)
+        if balloon < minimum:
+            minimum = balloon
+        left_min_arr.append(minimum)
     
     # 순회, from right
+    minimum = float('inf')
+    right_min_arr = []
+    
     for balloon in balloons[::-1]:
-        if  balloon < min_from_right:
-            min_from_right = balloon
-        right_min_arr.append(min_from_right)
+        if  balloon < minimum:
+            minimum = balloon
+        right_min_arr.append(minimum)
     right_min_arr.reverse()
 
     # 풍선 확인
