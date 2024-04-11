@@ -38,24 +38,24 @@ def solution(book_times):
     parse_to_minute = lambda time : sum(int(t) * (60 if i == "hour" else 1 ) for t, i in zip(time.split(":"), ["hour", "minute"]) )
     parsed_book_times = sorted([list(map(parse_to_minute, book_time)) for book_time in book_times], key= lambda x: x[0])
     check_out_times = []
-    occupied_room = 0
+    max_occupied_room = 0
     
     for check_in, check_out in parsed_book_times:
         # 초기값
         if not check_out_times :
             heappush(check_out_times, check_out + CLEANING_TIME)
-            occupied_room += 1
+            max_occupied_room += 1
             continue 
 
-        #  다음 손님 체크인 시간에
+        # 다음 손님 체크인 시간에
         # 방이 비어있으면
         if check_in >= check_out_times[0]:
             heappop(check_out_times)
         # 안 비어 있으면
         else:
-            occupied_room += 1
+            max_occupied_room += 1
             
         heappush(check_out_times, check_out + CLEANING_TIME)
-    return occupied_room
+    return max_occupied_room
 
 a2= [["15:00", "17:00"], ["16:40", "18:20"], ["14:20", "15:20"], ["14:10", "19:20"], ["18:20", "21:20"]]
