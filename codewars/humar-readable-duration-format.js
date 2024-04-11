@@ -63,7 +63,7 @@ const TIME_UNITS = {
 
 const formatDuration = seconds => {
   const modular = (num, divisor) => [Math.floor(num / divisor), num % divisor];
-  
+
   const result = Object.entries(TIME_UNITS)
     .reduce(([arr, acc], [key, val]) => {
       acc *= val;
