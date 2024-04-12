@@ -34,46 +34,13 @@ n개의 섬 사이에 다리를 건설하는 비용(costs)이 주어질 때,
 """
 
 
-# def find_root_node (parents, x): 
-#     if parents[x] != x:
-#         parents[x] = find_root_node(parents, parents[x])
-#     return parents[x]
-
-# def union(parents, a, b):
-#     a = find_root_node(parents, a)
-#     b = find_root_node(parents, b)
-#     if a < b: 
-#         parents[b] = a
-#     else:
-#         parents[a] = b
-    
-# def solution(n, costs):
-#     costs.sort(key= lambda x: -x[2])
-#     parents = [idx for idx in range(n)]
-#     answer = 0
-    
-#     for start, end, _ in costs:
-#         if find_root_node(parents, start) != find_root_node(parents, end):
-#             union(parents, start, end)
-#             answer += 1
-        
-#     return answer
-
-def find_root(x):
-    if nodes_tree[x] != x:
-        nodes_tree[x] = find_root(nodes_tree[x])
-    return nodes_tree[x]
-
-def union(a, b):
-    nodes_tree[find_root(b)] = find_root(a)
-
 def solution(n, costs):
     
-
+    find_root = lambda x: x if nodes_tree[x] == x else find_root(nodes_tree[x])
+    union = lambda a, b: nodes_tree.update({find_root(b): find_root(a)})
     
-    costs.sort(key=lambda x: x[2])  
-    global nodes_tree
-    nodes_tree = [idx for idx in range(n)]
+    costs.sort(key=lambda x: x[2])
+    nodes_tree = {idx: idx for idx in range(n)}
     answer = 0
 
     for start, end, cost in costs:
