@@ -1,4 +1,13 @@
 """
+
+```yaml
+problem: "인사고과"
+tags: 
+difficulty: LV3
+source: programmers
+link: https://school.programmers.co.kr/learn/courses/30/lessons/152995
+```
+
 ###### 문제 설명
 
 완호네 회사는 연말마다 1년 간의 인사고과에 따라 인센티브를 지급합니다.
@@ -38,5 +47,26 @@
 """
 
 def solution(scores):
+        
     answer = 0
-    return answer
+
+    target_attitude, target_peer_review = scores[0]
+    target_score_sum = target_attitude + target_peer_review
+
+    scores = sorted(scores[1:],key=lambda x: (-x[0],x[1]))
+
+    prev_max_peer_review = 0
+    for attitude, peer_review in scores:
+        
+        if (target_attitude < attitude
+        and target_peer_review < peer_review):
+            return -1
+        
+        if peer_review < prev_max_peer_review: 
+            continue
+            
+        prev_max_peer_review = peer_review
+        if attitude + peer_review > target_score_sum:
+            answer += 1
+            
+        return answer + 1
