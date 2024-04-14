@@ -6,7 +6,7 @@ tags: game, game-solver, algorithm
 difficulty: 3-kyu
 source: codewars
 link: https://www.codewars.com/kata/5296bc77afba8baa690002d7
-
+```
 
 Write a function that will solve a 9x9 Sudoku puzzle.
 The function will take one argument consisting of the 2D puzzle array,
@@ -54,7 +54,7 @@ const sudoku = puzzle => {
     rows = new Array(9).fill(0),
     cols = new Array(9).fill(0),
     boxes = new Array(9).fill(0);
-  // 모든 코드 표시,
+  // 모든 퍼즐 순회ㅣ,
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
       const num = puzzle[row][col];
