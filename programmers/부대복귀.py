@@ -66,7 +66,27 @@ link: https://school.programmers.co.kr/learn/courses/30/lessons/132266
 -   따라서 [2, -1, 0]을 return합니다.
 """
 
+from collections import deque
+
 def solution(n, roads, sources, destination):
-    answer = []
-    return answer
+
+    graph = {idx+1:[] for idx in range(n)}
+    for a, b in roads:
+        graph[a].append(b)
+        graph[b].append(a)
+        
+    distances = [-1] * (n + 1)
+    distances[destination] = 0
+    
+    queue = deque([destination])
+    while queue:
+        current = queue.popleft()
+        
+        for neighbor in graph[current]:
+            if distances[neighbor] != -1: continue 
+            distances[neighbor] = distances[current] + 1
+            queue.append(neighbor)
+                
+    return [distances[source] for source in sources]
+
 
