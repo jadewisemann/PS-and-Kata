@@ -1,7 +1,7 @@
 /*
 
 ```yaml
-problem: "Sudoku Solver"
+problem: "Sum Strings as Number"
 tags: string, big-integers, algorithms
 difficulty: 4-kyu
 source: codewars
@@ -21,6 +21,8 @@ A string representation of an integer will contain no characters besides the ten
 
 */
 
-function sumStrings(a,b) { 
-  
-}
+const sumStrings = (a, b) =>  (BigInt(a) + BigInt(b)).toString()
+
+console.log(sumStrings('123', '456'))
+
+console.log(toString(123))
