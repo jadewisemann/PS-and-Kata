@@ -21,3 +21,33 @@ In particular, this means that the secret string will never contain letters that
 */
 
 
+const recoverSecret = triplets => {
+  let chars = new Set(triplets.flat());
+  let graph = {};
+  let visited = {};
+  let result = [];
+
+  chars.forEach(char => {
+    graph[char] = new Set();
+    visited[char] = false;
+  });
+
+  triplets.forEach(triplet => {
+    graph[triplet[0]].add(triplet[1]);
+    graph[triplet[1]].add(triplet[2]);
+  });
+
+  function visit(char) {
+    if (visited[char]) return;
+    visited[char] = true;
+
+    graph[char].forEach(nextChar => visit(nextChar));
+    result.push(char);
+  }
+
+  chars.forEach(char => {
+    if (!visited[char]) visit(char);
+  });
+
+  return result.reverse().join('');
+}
