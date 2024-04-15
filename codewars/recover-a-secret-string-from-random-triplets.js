@@ -22,32 +22,44 @@ In particular, this means that the secret string will never contain letters that
 
 
 const recoverSecret = triplets => {
-  let chars = new Set(triplets.flat());
-  let graph = {};
-  let visited = {};
-  let result = [];
+  const graph = {};
+  const visited = {};
+  const result = [];
 
-  chars.forEach(char => {
+  triplets.flat().forEach(char => {
     graph[char] = new Set();
     visited[char] = false;
   });
 
-  triplets.forEach(triplet => {
-    graph[triplet[0]].add(triplet[1]);
-    graph[triplet[1]].add(triplet[2]);
+  triplets.forEach(([first, second, third]) => {
+    graph[first].add(second);
+    graph[second].add(third);
   });
 
-  function visit(char) {
+
+  const visit = char => {
+
     if (visited[char]) return;
     visited[char] = true;
 
-    graph[char].forEach(nextChar => visit(nextChar));
+    graph[char].forEach(visit);
     result.push(char);
-  }
+  };
 
-  chars.forEach(char => {
+  Object.keys(graph).forEach(char => {
     if (!visited[char]) visit(char);
   });
 
   return result.reverse().join('');
-}
+};
+
+triplets1 = [
+  ['t','u','p'],
+  ['w','h','i'],
+  ['t','s','u'],
+  ['a','t','s'],
+  ['h','a','p'],
+  ['t','i','s'],
+  ['w','h','s']
+]
+console.log(recoverSecret(triplets1))
