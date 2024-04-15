@@ -59,6 +59,22 @@ link: https://school.programmers.co.kr/learn/courses/30/lessons/142085
 
 """
 
-def solution(n, k, enemy):
-    answer = 0
+from heapq import heappop, heappush
+
+def solution(n, k, enemies):
+
+    answer  = 0
+    max_heap = []
+    
+    for enemy in enemies:
+        
+        heappush(max_heap, -enemy)
+        n -= enemy
+        
+        if n < 0: 
+            if k == 0: break
+            k -= 1
+            n -= heappop(max_heap)
+        answer += 1
+        
     return answer
