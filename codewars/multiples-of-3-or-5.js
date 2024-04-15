@@ -30,12 +30,7 @@ Additionally, if the number is negative, return 0.
 
 
 
-const solution = number => (number < 1 ) ? -1 : 
-  new Array(number - 1)
-    .fill(0)
-    .map((_, i) => i + 1)
-    .reduce((acc, curr) => {
-      if ((curr % 3 === 0 ) || (curr % 5 === 0)) {
-        acc += curr
-      } return acc
-    }, 0)
+const solution = number => (number < 1 ) ? 0 : 
+  [...new Array(number).keys()]
+    .filter(n => n % 3 == 0 || n % 5 == 0)
+    .reduce((acc, cur) => acc + cur)
