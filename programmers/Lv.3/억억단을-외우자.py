@@ -49,7 +49,29 @@ link: https://school.programmers.co.kr/learn/courses/30/lessons/138475
 [7, 8] 범위에서는 7은 2번, 8은 4번 등장하므로 8이 정답입니다.
 
 """
+    
+    
 
 def solution(e, starts):
-    answer = []
-    return answer
+    
+    divisor_counters = [0] * (e+1)
+    for number in range(1, int(e**0.5) +1):
+        sqrt = number ** 2
+        divisor_counters[sqrt] -= 1 
+        for idx in range(sqrt, e +1, number):
+            divisor_counters[idx] += 2
+        
+    
+    answers = [0] * (e+1)
+    max_storage = {
+        'counter': 0,
+        'number': 0,
+    }
+
+    for idx, divisor_counter in enumerate(reversed(divisor_counters)):
+        number = e - idx        
+        if divisor_counter >= max_storage['counter']:
+            max_storage = {'counter': divisor_counter, 'number': number}
+        answers[number] = max_storage['number']
+        
+    return [answers[start] for start in starts]
