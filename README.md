@@ -154,9 +154,7 @@ stack : XV
       <td align="center"><a href="./programmers/Lv.3/">Lv.3</a></td>
       <td align="center"><a href="https://school.programmers.co.kr/learn/courses/30/lessons/138475">억억단을 외우자</a></td>
       <td align="center"><a href="./programmers/Lv.3/억억단을-외우자.py">.py</a></td>
-      <td align="center"><a href="https://velog.io/@jadewisemann/%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8.py-%EC%96%B5%EC%96%B5%EB%8B%A8%EC%9D%84-%EC%99%B8%EC%9A%B0%EC%9E%90-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Lv.-3">
-      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-external-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
-      </a></td>
+      <td align="center"><a href="https://velog.io/@jadewisemann/%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8.py-%EC%96%B5%EC%96%B5%EB%8B%A8%EC%9D%84-%EC%99%B8%EC%9A%B0%EC%9E%90-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-Lv.-3">🔗</a></td>
     </tr>
   </tbody>
 </table>
