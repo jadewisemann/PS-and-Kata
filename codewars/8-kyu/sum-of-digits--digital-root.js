@@ -7,4 +7,5 @@ source: codewars
 link: https://www.codewars.com/kata/541c8630095125aba6000c00
 ```
 */
-const digitalRoot = n => (n - 1) % 9 + 1;
+
+const digitalRoot = n => n < 10 ? n : digitalRoot( digitalRoot(Math.floor(n / 10)) + n % 10);
