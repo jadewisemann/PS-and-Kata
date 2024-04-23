@@ -1,13 +1,13 @@
 """
-problem: '혼자서 하느 틱택토'
+problem: '혼자서 하는 틱택토'
 tags: ¿단순구현? 
 difficulty: LV2
 source: programmers
 link: https://school.programmers.co.kr/learn/courses/30/lessons/160585
 """
 
-CIRCLE = "O"
-CROSS = "X"
+FIRST_PLAYER = "O"
+SECOND_PLAYER = "X"
 BOARD_SIZE = 3
 
 def check_win(board, player):
@@ -27,24 +27,25 @@ def check_win(board, player):
 
 def solution(board):
     
-    o_count = ''.join(board).count(CIRCLE)
-    x_count = ''.join(board).count(CROSS)
+    first_marker_counter = ''.join(board).count(FIRST_PLAYER)
+    second_marker_counter = ''.join(board).count(SECOND_PLAYER)
     
-    if not (o_count == x_count or o_count == x_count + 1):
-        return 0
+    if not (
+        first_marker_counter == second_marker_counter 
+        or first_marker_counter == second_marker_counter + 1
+    ):return 0
 
-    o_win = check_win(board, CIRCLE)
-    x_win = check_win(board, CROSS)
+    is_first_win = check_win(board, FIRST_PLAYER)
+    is_second_win = check_win(board, SECOND_PLAYER)
     
-    # 선공이 이겼는데
-    if o_win and (  
-        x_win  # 후공도 이길수는 없다
-        or o_count == x_count  # 후공의 말이 선공과 같을 수는 없다
-        or not o_count == x_count + 1  # 후공의 말이 선공의 말보다 하나 초과하여, 작을 수 없다.
+    if is_first_win and (  
+        is_second_win 
+        or first_marker_counter == second_marker_counter 
+        or not first_marker_counter -1 == second_marker_counter
     ): return 0
 
 
-    if x_win and not (o_count == x_count):  
+    if is_second_win and not (first_marker_counter == second_marker_counter):  
         return 0
     
     return 1
