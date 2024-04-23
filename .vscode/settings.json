@@ -27,5 +27,6 @@
   "peacock.squigglyBeGone": false,
   "peacock.surpriseMeOnStartup": false,
   "peacock.affectPanelBorder": true,
-  "peacock.affectTabActiveBorder": true
+  "peacock.affectTabActiveBorder": true,
+  "cSpell.words": ["baekjoon", "codewars"]
 }
