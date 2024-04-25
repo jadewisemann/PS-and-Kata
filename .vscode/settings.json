@@ -28,5 +28,9 @@
   "peacock.surpriseMeOnStartup": false,
   "peacock.affectPanelBorder": true,
   "peacock.affectTabActiveBorder": true,
-  "cSpell.words": ["baekjoon", "codewars"]
+  "cSpell.words": [
+    "baekjoon",
+    "codewars",
+    "kata"
+  ]
 }
