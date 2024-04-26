@@ -1,7 +1,7 @@
 """
 ```yaml
 problem: '가장 먼 노드'
-tags:그래프
+tags: 그래프
 difficulty: Lv.3
 source: programmers
 link: https://school.programmers.co.kr/learn/courses/30/lessons/49189
@@ -24,13 +24,13 @@ def solution(n, edges):
     distances = [NOT_VISIT] * (n+1)
     
     distances[1] = 0
-    q = deque([1])
+    queue = deque([1])
     
-    while q:
-        current = q.popleft()
+    while queue:
+        current = queue.popleft()
         for next_node in graph[current]:
             if distances[next_node] == -1 :
                 distances[next_node] = distances[current] + 1
-                q.append(next_node)
+                queue.append(next_node)
                 
     return distances.count(max(distances))
