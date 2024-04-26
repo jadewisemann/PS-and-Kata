@@ -7,3 +7,30 @@ source: programmers
 link: https://school.programmers.co.kr/learn/courses/30/lessons/49189
 ```
 """
+
+
+from collections import deque
+
+NOT_VISIT = -1
+
+def solution(n, edges):
+    
+    graph = [[] for _ in range(n+1)]
+
+    for n1, n2 in edges:
+        graph[n1].append(n2)
+        graph[n2].append(n1)
+    
+    distances = [NOT_VISIT] * (n+1)
+    
+    distances[1] = 0
+    q = deque([1])
+    
+    while q:
+        current = q.popleft()
+        for next_node in graph[current]:
+            if distances[next_node] == -1 :
+                distances[next_node] = distances[current] + 1
+                q.append(next_node)
+                
+    return distances.count(max(distances))
