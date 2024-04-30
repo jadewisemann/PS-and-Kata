@@ -1,6 +1,6 @@
 
 
-### [PS][5-kyu][.js] title ( TIL 24 04 29 )
+### [kata][5-kyu][.js] The Hashtag Generator ( TIL 24 04 29 )
 
 ```yaml
 problem: 'The Hashtag Generator'
